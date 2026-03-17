@@ -1,0 +1,6 @@
+[submodule "XamlRadialProgressBar"]
+	path = XamlRadialProgressBar
+	url = https://github.com/panthernet/XamlRadialProgressBar.git
+[submodule "rpi-/XamlRadialProgressBar"]
+	path = rpi-/XamlRadialProgressBar
+	url = https://github.com/panthernet/XamlRadialProgressBar.git

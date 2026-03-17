@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HardwareMonitor.Models
 {
-    internal class JsonParser
+    internal class HardwareDataListener
     {
+        
     }
 }

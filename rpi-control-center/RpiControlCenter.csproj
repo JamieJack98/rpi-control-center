@@ -23,4 +23,16 @@
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Update="Assets\Images\cpu.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Update="Assets\Images\graphics-card.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Update="Assets\Images\ram.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+  </ItemGroup>
 </Project>

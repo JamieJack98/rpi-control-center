@@ -1,0 +1,91 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:HardwareMonitor.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="HardwareMonitor.Views.MainWindow"
+        xmlns:assets="avares://rpi-control-center/Assets"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="HardwareMonitor"
+        Background="#404040">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+   <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,50">
+
+        <!-- RAM -->
+        <Border Grid.Column="0" Margin="10" CornerRadius="10">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="RAM"
+                           FontFamily="/Assets/Fonts/#Roboto Mono"
+                           FontWeight="DemiBold"
+                           FontSize="28"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+                <Image Source="/Assets/Images/ram.png"
+                       Width="100"/>
+                <Image></Image>
+                <ProgressBar 
+                             Margin="0,12"
+                             Height="20"
+                             Foreground="BlanchedAlmond"
+                             Value="70"/>
+                <TextBlock Text="70%"/>
+                <TextBlock Text=" TOTAL:"/>
+                
+            </StackPanel>
+        </Border>
+
+        <!-- GPU -->
+        <Border Grid.Column="1" Margin="10" CornerRadius="10">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="GPU"
+                           FontFamily="/Assets/Fonts/#Roboto Mono"
+                           FontWeight="DemiBold"
+                           FontSize="28"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+                <Image Source="/Assets/Images/graphics-card.png"
+                       Width="100"/>
+                <ProgressBar IsIndeterminate="True"
+                             Margin="0,12"
+                             Height="20"/>
+                <TextBlock Text="70%"/>
+                <TextBlock Text=" TOTAL:"/>
+            </StackPanel>
+        </Border>
+
+        <!-- CPU -->
+        <Border Grid.Column="2" Margin="10" CornerRadius="10">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="CPU"
+                           FontFamily="/Assets/Fonts/#Roboto Mono"
+                           FontWeight="DemiBold"
+                           FontSize="28"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+                <Image Source="/Assets/Images/cpu.png"
+                       Width="80"
+                       Margin="14"/>
+                <ProgressBar IsIndeterminate="True"
+                             Margin="0,12"
+                             Height="20"/>
+                <TextBlock Text="70%"/>
+                <TextBlock Text=" TOTAL:"/>
+            </StackPanel>
+        </Border>
+       <!-- LaunchPad -->
+       <Border Grid.Row="1">
+		   <TextBlock Text="ASA"/>
+           
+       </Border>
+
+    </Grid>
+
+</Window>
