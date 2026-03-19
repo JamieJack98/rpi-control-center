@@ -31,13 +31,12 @@
                 <Image Source="/Assets/Images/ram.png"
                        Width="100"/>
                 <Image></Image>
-                <ProgressBar 
-                             Margin="0,12"
-                             Height="20"
-                             Foreground="BlanchedAlmond"
-                             Value="70"/>
-                <TextBlock Text="70%"/>
-                <TextBlock Text=" TOTAL:"/>
+                <ProgressBar Margin="0,12" Height="20"
+             Maximum="100"
+             Value="{Binding HardwareData.RamUsage}"/>
+            <TextBlock Text="{Binding HardwareData.RamUsage, StringFormat={}{0:F1}%}"/>
+            <TextBlock Text="TOTAL:"/>
+            <TextBlock Text="{Binding HardwareData.RamTotal, StringFormat={}{0:F0} MB}"/>
                 
             </StackPanel>
         </Border>
@@ -53,11 +52,12 @@
                            HorizontalAlignment="Center"/>
                 <Image Source="/Assets/Images/graphics-card.png"
                        Width="100"/>
-                <ProgressBar IsIndeterminate="True"
-                             Margin="0,12"
-                             Height="20"/>
-                <TextBlock Text="70%"/>
-                <TextBlock Text=" TOTAL:"/>
+                <ProgressBar Margin="0,12" Height="20"
+             Maximum="{Binding HardwareData.GpuTotal}"
+             Value="{Binding HardwareData.GpuUsage}"/>
+             <TextBlock Text="{Binding HardwareData.GpuUsage, StringFormat={}{0:F0} MB}"/>
+             <TextBlock Text="TOTAL:"/>
+             <TextBlock Text="{Binding HardwareData.GpuTotal, StringFormat={}{0:F0} MB}"/>
             </StackPanel>
         </Border>
 
@@ -73,18 +73,14 @@
                 <Image Source="/Assets/Images/cpu.png"
                        Width="80"
                        Margin="14"/>
-                <ProgressBar IsIndeterminate="True"
-                             Margin="0,12"
-                             Height="20"/>
-                <TextBlock Text="70%"/>
-                <TextBlock Text=" TOTAL:"/>
+                <ProgressBar Margin="0,12" Height="20"
+             Maximum="100"
+             Value="{Binding HardwareData.CpuUsage}"/>
+             <TextBlock Text="{Binding HardwareData.CpuUsage, StringFormat={}{0:F1}%}"/>
+             <TextBlock Text="CPU Frequency:"/>
+             <TextBlock Text="{Binding HardwareData.CpuFreq, StringFormat={}{0:F0} MHz}"/>
             </StackPanel>
         </Border>
-       <!-- LaunchPad -->
-       <Border Grid.Row="1">
-		   <TextBlock Text="ASA"/>
-           
-       </Border>
 
     </Grid>
 

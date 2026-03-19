@@ -1,4 +1,6 @@
 using Avalonia.Controls;
+using Avalonia.Threading;
+using HardwareMonitor.Models;
 
 namespace HardwareMonitor.Views
 {
