@@ -9,6 +9,8 @@ namespace HardwareMonitor.Models
 {
     public class HardwareDataListener
     {
+        private const string _ipAddress = "localhost";
+        private const UInt16 _port = 1883;
         private MqttFactory _mqttFactory;
         private IMqttClient _mqttClient;
         private MqttClientOptions _options;
@@ -21,11 +23,11 @@ namespace HardwareMonitor.Models
 
             _options = new MqttClientOptionsBuilder()
                 .WithClientId("pi-client")
-                .WithTcpServer("localhost", 1883)
+                .WithTcpServer(_ipAddress, _port)
                 .Build();
         }
 
-        public async Task StartAsync(string broker = "localhost", UInt16 port = 1883)
+        public async Task StartAsync(string broker = _ipAddress, UInt16 port = _port)
         {
             _mqttClient.ApplicationMessageReceivedAsync += e =>
             {
