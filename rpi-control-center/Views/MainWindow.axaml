@@ -46,10 +46,10 @@
         <!-- GPU -->
         <Border Grid.Column="1" Margin="10" CornerRadius="10">
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="GPU"
+                <TextBlock Text="{Binding HardwareData.GpuName}"
                            FontFamily="/Assets/Fonts/#Roboto Mono"
                            FontWeight="DemiBold"
-                           FontSize="28"
+                           FontSize="18"
                            Foreground="White"
                            HorizontalAlignment="Center"/>
                 <Image Source="/Assets/Images/graphics-card.png"
