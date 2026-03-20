@@ -29,7 +29,6 @@ namespace HardwareMonitor.Models
         {
             _mqttClient.ApplicationMessageReceivedAsync += e =>
             {
-                Console.WriteLine($"Received message on topic {e.ApplicationMessage.Topic}: {Encoding.UTF8.GetString(e.ApplicationMessage.PayloadSegment.Array)}");
                 var payloadSegment = e.ApplicationMessage.PayloadSegment;
                 string payload;
 
@@ -39,7 +38,10 @@ namespace HardwareMonitor.Models
                         payloadSegment.Array,
                         payloadSegment.Offset,
                         payloadSegment.Count);
+
+                    Console.WriteLine($"Received message on topic {e.ApplicationMessage.Topic}: {Encoding.UTF8.GetString(e.ApplicationMessage.PayloadSegment.Array)}");
                 }
+
                 else
                 {
                     payload = string.Empty;
@@ -63,13 +65,35 @@ namespace HardwareMonitor.Models
                 return Task.CompletedTask;
             };
 
+            _mqttClient.ConnectedAsync += async e =>
+            {
+                Console.WriteLine("Connected to broker");
+
+                await _mqttClient.SubscribeAsync("hw-data/topic");
+                Console.WriteLine("Subscribed to hw-data/topic");
+            };
+
+            _mqttClient.DisconnectedAsync += async e =>
+            {
+                Console.WriteLine("Disconnected from broker");
+
+                await Task.Delay(2000);
+
+                try
+                {
+                    await _mqttClient.ConnectAsync(_options);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Reconnect failed: {ex.Message}");
+                }
+            };
+
             if (!_mqttClient.IsConnected)
             {
                 await _mqttClient.ConnectAsync(_options);
             }
 
-            // Subscribe to the topic after connecting
-            await _mqttClient.SubscribeAsync("hw-data/topic");
             Console.WriteLine("Subscribed to hw-data/topic");
         }
 
