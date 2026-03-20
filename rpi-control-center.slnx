@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="rpi-control-center/RpiControlCenter.csproj" />
+  <Project Path="RpiControlCenterTest/RpiControlCenterTest.csproj" Id="9e1fd918-2a70-4671-8f80-34a931dc79ee" />
 </Solution>

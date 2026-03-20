@@ -1,6 +1,5 @@
 ﻿using Avalonia.Threading;
 using HardwareMonitor.Models;
-using RpiControlCenter.Models;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
