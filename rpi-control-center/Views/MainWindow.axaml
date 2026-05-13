@@ -19,36 +19,39 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-   <Grid RowDefinitions="*,*,*">
+   <Grid RowDefinitions="*,*,*" ColumnDefinitions="*, *">
 
         <!-- RAM -->
-        <Border Grid.Row="0" Margin="10" CornerRadius="10">
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Margin="10" CornerRadius="10">
             <StackPanel VerticalAlignment="Center">
+                <!-- Ram text -->
                 <TextBlock Text="RAM"
                            FontFamily="/Assets/Fonts/#Roboto Mono"
                            FontWeight="DemiBold"
                            FontSize="28"
                            Foreground="White"
                            HorizontalAlignment="Center"/>
+                <!-- Ram image -->
                 <Image Source="/Assets/Images/ram.png"
                        Width="100"/>
+                <!-- Total Ram available -->
+                <TextBlock Text="{Binding HardwareData.RamTotal, StringFormat={}{0:F0} GB}"
+                       Grid.Column="2"
+                       HorizontalAlignment="Right"
+                       FontFamily="/Assets/Fonts/#Roboto Mono"
+                       FontWeight="Bold"
+                       FontSize="16"
+                       Foreground="White"/>
+                <!-- Rrogress Bar -->
                 <ProgressBar Margin="0,12" 
                              Height="20"
                              Maximum="100"
                              Foreground="Yellow"
                              Value="{Binding HardwareData.RamUsage}"/>
-            <TextBlock Text="{Binding HardwareData.RamUsage, StringFormat={}{0:F1}%}"
+            <!-- Ram usage % -->
+            <TextBlock Text="{Binding HardwareData.RamUsage, StringFormat={}{0:F0}%}"
                        FontFamily="/Assets/Fonts/#Roboto Mono"
-                       FontWeight="Bold"
-                       FontSize="16"
-                       Foreground="White"/>
-            <TextBlock Text="TOTAL:"
-                       FontFamily="/Assets/Fonts/#Roboto Mono"
-                       FontWeight="Bold"
-                       FontSize="16"
-                       Foreground="White"/>
-            <TextBlock Text="{Binding HardwareData.RamTotal, StringFormat={}{0:F0} MB}"
-                       FontFamily="/Assets/Fonts/#Roboto Mono"
+                       HorizontalAlignment="Center"
                        FontWeight="Bold"
                        FontSize="16"
                        Foreground="White"/>
@@ -57,9 +60,10 @@
         </Border>
 
         <!-- GPU -->
-        <Border Grid.Row="1" Margin="10" CornerRadius="10">
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="10" CornerRadius="10">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="{Binding HardwareData.GpuName}"
+                           TextInputOptions.Uppercase="True"
                            FontFamily="/Assets/Fonts/#Roboto Mono"
                            FontWeight="DemiBold"
                            FontSize="18"
@@ -91,7 +95,7 @@
         </Border>
 
         <!-- CPU -->
-        <Border Grid.Row="2" Margin="10" CornerRadius="10">
+        <Border Grid.Row="2" Grid.ColumnSpan="2" Margin="10" CornerRadius="10">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="CPU"
                            FontFamily="/Assets/Fonts/#Roboto Mono"
@@ -107,7 +111,7 @@
                              Maximum="100"
                              Foreground="Yellow"
                              Value="{Binding HardwareData.CpuUsage}"/>
-             <TextBlock Text="{Binding HardwareData.CpuUsage, StringFormat={}{0:F1}%}"
+             <TextBlock Text="{Binding HardwareData.CpuUsage, StringFormat={}{0:F0}%}"
                        FontFamily="/Assets/Fonts/#Roboto Mono"
                        FontWeight="Bold"
                        FontSize="16"

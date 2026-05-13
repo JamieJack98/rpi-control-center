@@ -34,7 +34,7 @@ namespace HardwareMonitor.ViewModels
         {
             Dispatcher.UIThread.Post(() =>
             {
-                // Update the existing HardwareData object property by property
+                // TODO: process numbers so they are represented in GB instead of MB, and GHz instead of MHz
                 HardwareData.CpuUsage = data.CpuUsage;
                 HardwareData.CpuFreq = data.CpuFreq;
                 HardwareData.RamUsage = data.RamUsage;
